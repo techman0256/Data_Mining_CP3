@@ -1,11 +1,2 @@
-venue = data['venue']
-    batting_team = data['batting_team']
-    bowling_team = data['bowling_team']
-    ball = data['ball']
-    innings_total = data['innings_total']
-    run_rate = data['run_rate']
-    required_run_rate = data['required_run_rate']
-    ball_left = data['ball_left']
-    runs_needed = data['runs_needed']
-    winner_runs = data['winner_runs']
-    winner_wickets = data['winner_wickets']
+if __name__== '__main__':
+#     uvicorn.run(app, host='127.0.0.1', port=8000)

@@ -4,20 +4,19 @@ import tensorflow as tf
 from tensorflow import keras
 import pandas as pd
 import numpy as np
-
+import joblib
 from match_win_parameter import MatchWinParameter
 
 from sklearn.preprocessing import StandardScaler, LabelEncoder, OneHotEncoder
 from sklearn.compose import ColumnTransformer
 from sklearn.pipeline import Pipeline
-from tensorflow.keras.models import Sequential
-from tensorflow.keras.layers import Dense, Dropout
-from tensorflow.keras.utils import to_categorical
+# from tensorflow.keras.models import Sequential
+# from tensorflow.keras.layers import Dense, Dropout
+# from tensorflow.keras.utils import to_categorical
 
 app = FastAPI()
 #load h5 model form tensorflow
 model = tf.keras.models.load_model('api/model.h5')
-
 
 
 @app.get("/")
@@ -40,40 +39,33 @@ def match_win(data: MatchWinParameter):
     winner_wickets = data['winner_wickets']
     target = data['target']
     
-    #preprocessing data
-    categorical_cols = ["venue", "batting_team", "bowling_team"]
-    numeric_cols = ['runs_needed','winner_wickets','winner_runs','required_run_rate','ball','innings_total','target','ball_left',
-                    'run_rate']
+    # load preprocessor
+    preprocessor = joblib.load('api/preprocessor.pkl')
+    
+    df = pd.DataFrame({
+        'venue': [venue],
+        'batting_team': [batting_team],
+        'bowling_team': [bowling_team],
+        'ball': [ball],
+        'innings_total': [innings_total],
+        'run_rate': [run_rate],
+        'required_run_rate': [required_run_rate],
+        'ball_left': [ball_left],
+        'runs_needed': [runs_needed],
+        'winner_runs': [winner_runs],
+        'winner_wickets': [winner_wickets],
+        'target': [target]
+    })
 
-    numeric_transformer = Pipeline(steps=[("scaler", StandardScaler())])
-    categorical_transformer = Pipeline(steps=[
-        ("label_encoder", OneHotEncoder(handle_unknown='ignore'))
-    ])
-
-    # Combine transformers
-    preprocessor = ColumnTransformer(
-        transformers=[
-            ("num", numeric_transformer, numeric_cols),
-            ("cat", categorical_transformer, categorical_cols)
-        ]
-    )
-
-    # put data into a numpy array
-    df = np.array([venue, batting_team,bowling_team,ball,innings_total,run_rate,required_run_rate,ball_left,runs_needed,winner_runs,winner_wickets,target])
-    print(df)
     # apply preprocessing
-    df = preprocessor.transform(df)
-    print(df.size)
-    #return df modle.predict
-    prediction = model.predict(df)
+    df_transformed = preprocessor.transform(df)
+
+    prediction = model.predict(df_transformed)
     print(prediction)
 
-    return {"prediction": prediction}
+    return {"prediction": str(prediction[0][0])}
 
 #Bharat Ratna Shri Atal Bihari Vajpayee Ekana Cricket Stadium, Lucknow	Sri Lanka	Netherlands	21.5	263	5.587786	5.005917	169	141.0	0.0	5.0	263.0   1
-
-
-
 
 
 if __name__== '__main__':
