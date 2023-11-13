@@ -18,7 +18,7 @@ To use this API, follow the steps below:
 
 2. Install the required dependencies:
    ```bash
-   pip install -r requirements.txt```
+   pip install -r requirements.txt
 
 
 ## Usage
@@ -27,8 +27,10 @@ To use this API, follow the steps below:
 
 To run the API locally, execute the following command:
 
-   ```bash
-   python world_cup_api.py```
+   ``` 
+   bash
+   python world_cup_api.py
+   ```
 
 The API will be accessible at 'http://127.0.0.1:8000'
 
@@ -65,5 +67,6 @@ The API will return the winning probability for the specified team in the form o
       "Winning probability for this team": "0.75"
    }
 ```
+
 
 
