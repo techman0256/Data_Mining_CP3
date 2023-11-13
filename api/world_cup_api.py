@@ -63,9 +63,7 @@ def match_win(data: MatchWinParameter):
     prediction = model.predict(df_transformed)
     print(prediction)
 
-    return {"prediction": str(prediction[0][0])}
-
-#Bharat Ratna Shri Atal Bihari Vajpayee Ekana Cricket Stadium, Lucknow	Sri Lanka	Netherlands	21.5	263	5.587786	5.005917	169	141.0	0.0	5.0	263.0   1
+    return {"Winning probability for this team": str(prediction[0][0])}
 
 
 if __name__== '__main__':
