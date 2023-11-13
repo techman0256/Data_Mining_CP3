@@ -38,6 +38,7 @@ def match_win(data: MatchWinParameter):
     runs_needed = data['runs_needed']
     winner_runs = data['winner_runs']
     winner_wickets = data['winner_wickets']
+    target = data['target']
     
     #preprocessing data
     categorical_cols = ["venue", "batting_team", "bowling_team"]
@@ -57,18 +58,26 @@ def match_win(data: MatchWinParameter):
         ]
     )
 
-    # Preprocessing the data
-    X = preprocessor.fit_transform(data)
+    # put data into a numpy array
+    df = np.array([venue, batting_team,bowling_team,ball,innings_total,run_rate,required_run_rate,ball_left,runs_needed,winner_runs,winner_wickets,target])
+    print(df)
+    # apply preprocessing
+    df = preprocessor.transform(df)
+    print(df.size)
+    #return df modle.predict
+    prediction = model.predict(df)
+    print(prediction)
+
+    return {"prediction": prediction}
+
+#Bharat Ratna Shri Atal Bihari Vajpayee Ekana Cricket Stadium, Lucknow	Sri Lanka	Netherlands	21.5	263	5.587786	5.005917	169	141.0	0.0	5.0	263.0   1
 
 
 
 
 
-
-
-
-# if __name__== '__main__':
-#     uvicorn.run(app, host='127.0.0.1', port=8000)
+if __name__== '__main__':
+    uvicorn.run(app, host='127.0.0.1', port=8000)
 
 
 
