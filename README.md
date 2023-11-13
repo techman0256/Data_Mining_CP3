@@ -41,7 +41,8 @@ Description: Predicts the winning probability for a cricket team based on input 
 Request Body
 Provide the input parameters for match prediction using the MatchWinParameter class.
 
-      ```json
+      ```
+      json
       {
       "venue": "Stadium Name",
          "batting_team": "Team A",
@@ -56,17 +57,17 @@ Provide the input parameters for match prediction using the MatchWinParameter cl
          "winner_wickets": 3,
          "target": 200
       }
-   ```
+      ```
 
 ### Response 
 The API will return the winning probability for the specified team in the form of a JSON response.
 
-```
+   ```
    Json
    {
       "Winning probability for this team": "0.75"
    }
-```
+   ```
 
 
 
