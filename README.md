@@ -66,5 +66,10 @@ The API will return the winning probability for the specified team in the form o
    }
    ```
 
+### Contribution of Each Member
+- Dhruv Shah, Pranav Patel and Sumukh Patel - Developed the core logic behind the models to be used for Task1, Task2 and Task3. Implemented the model using Python and required libraries.
+
+- Akshat Prasad, Arsh Jindal and Chinmay Vaishnav - Worked on the API Development part. Deployed the ML Models built for Task1, Task2 and Task3 successfully. Also worked on structuring the repository and updating the Readme.md file.
+  
 
 
