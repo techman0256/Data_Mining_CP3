@@ -26,8 +26,6 @@ run_rate = 7.5
 required_run_rate = 6.8
 ball_left = 90
 runs_needed = 40
-winner_runs = 160
-winner_wickets = 2
 target = 200
 
 
@@ -42,8 +40,6 @@ df = pd.DataFrame({
         'required_run_rate': [required_run_rate],
         'ball_left': [ball_left],
         'runs_needed': [runs_needed],
-        'winner_runs': [winner_runs],
-        'winner_wickets': [winner_wickets],
         'target': [target]
 })
 

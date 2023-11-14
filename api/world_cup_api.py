@@ -35,8 +35,6 @@ def match_win(data: MatchWinParameter):
     required_run_rate = data['required_run_rate']
     ball_left = data['ball_left']
     runs_needed = data['runs_needed']
-    winner_runs = data['winner_runs']
-    winner_wickets = data['winner_wickets']
     target = data['target']
     
     # load preprocessor
@@ -52,8 +50,6 @@ def match_win(data: MatchWinParameter):
         'required_run_rate': [required_run_rate],
         'ball_left': [ball_left],
         'runs_needed': [runs_needed],
-        'winner_runs': [winner_runs],
-        'winner_wickets': [winner_wickets],
         'target': [target]
     })
 

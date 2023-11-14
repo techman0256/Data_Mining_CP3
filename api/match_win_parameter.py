@@ -10,6 +10,4 @@ class MatchWinParameter(BaseModel):
     required_run_rate: float
     ball_left: int
     runs_needed : float
-    winner_runs : float
-    winner_wickets: float
     target: float
