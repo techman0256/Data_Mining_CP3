@@ -7,9 +7,9 @@ import numpy as np
 
 from match_win_parameter import MatchWinParameter
 
-from sklearn.preprocessing import StandardScaler, LabelEncoder, OneHotEncoder
-from sklearn.compose import ColumnTransformer
-from sklearn.pipeline import Pipeline
+# from sklearn.preprocessing import StandardScaler, LabelEncoder, OneHotEncoder
+# from sklearn.compose import ColumnTransformer
+# from sklearn.pipeline import Pipeline
 
 
 model = tf.keras.models.load_model('api/model.h5')
@@ -51,3 +51,26 @@ print(df_transformed.shape)
 
 prediction = model.predict(df_transformed)
 print(prediction[0][0])
+
+Player = "V Kohli"
+
+df= pd.read_csv('datasets/predicted_scores.csv')
+
+df = df[df['Player']==Player]
+
+print(df)
+
+m10 = df['M10'].values
+m11 = df['M11'].values
+
+print(m10,m11)
+
+
+df= pd.read_csv('datasets/predicted_scores.csv')
+df = df.sort_values(by=['Total'], ascending=False)
+df = df.head(10)
+df= df[['Player','Total']]
+
+#print the 3rd row of df as a numpy array
+
+print(df.iloc[2].values)

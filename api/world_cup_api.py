@@ -6,6 +6,7 @@ import pandas as pd
 import numpy as np
 import joblib
 from match_win_parameter import MatchWinParameter
+from run_pred_parameter import RunPredParameter
 
 from sklearn.preprocessing import StandardScaler, LabelEncoder, OneHotEncoder
 from sklearn.compose import ColumnTransformer
@@ -60,6 +61,42 @@ def match_win(data: MatchWinParameter):
     print(prediction)
 
     return {"Winning probability for this team": str(prediction[0][0])}
+
+
+@app.post("/predict_runs")
+def predict_run(data: RunPredParameter):
+    data= data.model_dump()
+    Player = data['Player']
+    #search Player in 1st column of dataset predicted_scores.csv
+
+    df= pd.read_csv('datasets/predicted_scores.csv')
+
+    df = df[df['Player']==Player]
+
+    m10 = int(df['M10'].values[0])
+    m11 = int(df['M11'].values[0])
+
+    return {"Predicted Runs for Match 10 ": str(m10),
+            "Predicted Runs for Match 11 ": str(m11)}
+
+
+@app.post("/get_top_10_most_runs_player")
+def top_10_batsman():
+    df= pd.read_csv('datasets/predicted_scores.csv')
+    df = df.sort_values(by=['Total'], ascending=False)
+    df = df.head(10)
+    df= df[['Player','Total']]
+    df['Total'] = df['Total'].astype(int)
+    #return jason format
+    return {"1st": str(df.iloc[0].values),
+            "3rd": str(df.iloc[2].values),
+            "2nd": str(df.iloc[1].values),
+            "4th": str(df.iloc[3].values),
+            "5th": str(df.iloc[4].values),
+            "6th": str(df.iloc[5].values),
+            "7th": str(df.iloc[6].values),
+            "8th": str(df.iloc[7].values),
+            "9th": str(df.iloc[8].values)}
 
 
 if __name__== '__main__':
