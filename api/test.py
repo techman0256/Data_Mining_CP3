@@ -28,6 +28,19 @@ ball_left = 90
 runs_needed = 40
 target = 200
 
+# {
+#   "venue": "M Chinnaswamy Stadium, Bengaluru",
+#   "batting_team": "Pakistan",
+#   "bowling_team": "Australia",
+#   "ball": 25.1,
+#   "innings_total": 305,
+#   "run_rate": 6.754967,
+#   "required_run_rate": 7.973154,
+#   "ball_left": 149,
+#   "runs_needed": 198.0,
+#   "target": 368.0
+# }
+
 
 
 df = pd.DataFrame({
