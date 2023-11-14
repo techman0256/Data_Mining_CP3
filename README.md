@@ -1,4 +1,4 @@
-# Data_Mining_CP3
+# Data Mining CP3
 
 # World Cup 2023 Cricket Match Prediction API by Group Deep Miners
 
