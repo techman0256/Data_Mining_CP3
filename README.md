@@ -53,8 +53,6 @@ Request Body
       "required_run_rate": 8.0,
       "ball_left": 30,
       "runs_needed": 50,
-      "winner_runs": 160,
-      "winner_wickets": 3,
       "target": 200
    }
    ```
