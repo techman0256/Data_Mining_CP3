@@ -99,6 +99,16 @@ def top_10_batsman():
             "9th": str(df.iloc[8].values)}
 
 
+@app.post("/get_most_centuries_scoring_player")
+def top_century():
+    df= pd.read_csv('datasets/predicted_scores.csv')
+    df = df.sort_values(by=['Centuries'], ascending=False)
+    #df = df.head()
+    df= df[['Player','Centuries']]
+    df['Centuries'] = df['Centuries'].astype(int)
+    #return jason format
+    return {"Most Centuries Scoring Player": str(df.iloc[0].values) + str(df.iloc[1].values)}   
+
 if __name__== '__main__':
     uvicorn.run(app, host='127.0.0.1', port=8000)
 
