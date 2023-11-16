@@ -13,7 +13,7 @@ To use this API, follow the steps below:
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/your-username/WorldCup2023PredictionAPI.git
+   git clone https://github.com/techman0256/Data_Mining_CP3
 
 2. Install the required dependencies:
    ```bash
